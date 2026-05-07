@@ -1,0 +1,54 @@
+[package]
+name = "feishu-mcp"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# MCP Framework - official Rust MCP SDK
+rmcp = { version = "0.3", features = ["server", "macros", "transport-io", "transport-async-rw"] }
+
+# Schemars is re-exported via rmcp; do not add separately to avoid version conflict
+
+# CLI argument parsing
+clap = { version = "4", features = ["derive"] }
+
+# HTTP Client
+reqwest = { version = "0.12", features = ["json", "rustls-tls"], default-features = false }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_yaml = "0.9"
+
+# Database
+rusqlite = { version = "0.32", features = ["bundled"] }
+
+# Encryption
+aes-gcm = "0.10"
+rand = "0.8"
+base64 = "0.22"
+
+# Async
+tokio = { version = "1.0", features = ["full"] }
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Error handling
+thiserror = "2.0"
+anyhow = "1.0"
+
+# Time
+chrono = { version = "0.4", features = ["serde"] }
+
+# Concurrency
+dashmap = "5.5"
+
+# Config
+dirs = "5.0"
+
+[dev-dependencies]
+tokio-test = "0.4"
+wiremock = "0.6"
+mockall = "0.13"

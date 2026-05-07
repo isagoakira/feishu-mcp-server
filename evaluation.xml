@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<evaluations>
+  <metadata>
+    <project>Feishu MCP Server</project>
+    <version>0.1.0</version>
+    <created>2026-05-07</created>
+    <description>
+      10 evaluation questions covering the three Feishu tool domains:
+      Documents (3), Tasks (4), Messages (3).
+      Each question tests a specific tool invocation with expected behavior.
+    </description>
+  </metadata>
+
+  <!-- ================================================================== -->
+  <!-- DOCUMENTS EVALS (3)                                                 -->
+  <!-- ================================================================== -->
+
+  <eval id="feishu-doc-1">
+    <question>Search for documents containing "meeting notes" and return the first 5 results.</question>
+    <expected_tool>search_documents</expected_tool>
+    <expected_arguments>
+      <argument name="query" type="string">meeting notes</argument>
+      <argument name="limit" type="number">5</argument>
+    </expected_arguments>
+    <expected_result_type>array</expected_result_type>
+    <description>
+      Verify search_documents accepts query string and optional limit,
+      returns a list of matching documents.
+    </description>
+  </eval>
+
+  <eval id="feishu-doc-2">
+    <question>Get the document with ID "dox123456789" and show me its title and content.</question>
+    <expected_tool>get_document</expected_tool>
+    <expected_arguments>
+      <argument name="doc_id" type="string">dox123456789</argument>
+    </expected_arguments>
+    <expected_result_type>object</expected_result_type>
+    <description>
+      Verify get_document accepts a doc_id and returns the document object
+      with title, content, and metadata.
+    </description>
+  </eval>
+
+  <eval id="feishu-doc-3">
+    <question>Create a new document titled "Q3 Planning" in the folder "fld_abc123".</question>
+    <expected_tool>create_document</expected_tool>
+    <expected_arguments>
+      <argument name="title" type="string">Q3 Planning</argument>
+      <argument name="parent_token" type="string">fld_abc123</argument>
+    </expected_arguments>
+    <expected_result_type>object</expected_result_type>
+    <description>
+      Verify create_document accepts title, optional content, and parent_token,
+      returns the created document.
+    </description>
+  </eval>
+
+  <!-- ================================================================== -->
+  <!-- TASKS EVALS (4)                                                     -->
+  <!-- ================================================================== -->
+
+  <eval id="feishu-task-1">
+    <question>List all tasks associated with goal "goal_xyz789".</question>
+    <expected_tool>list_tasks</expected_tool>
+    <expected_arguments>
+      <argument name="goal_id" type="string">goal_xyz789</argument>
+    </expected_arguments>
+    <expected_result_type>array</expected_result_type>
+    <description>
+      Verify list_tasks accepts a goal_id and returns an array of tasks
+      associated with that goal.
+    </description>
+  </eval>
+
+  <eval id="feishu-task-2">
+    <question>Get the details of task "task_42".</question>
+    <expected_tool>get_task</expected_tool>
+    <expected_arguments>
+      <argument name="task_id" type="string">task_42</argument>
+    </expected_arguments>
+    <expected_result_type>object</expected_result_type>
+    <description>
+      Verify get_task accepts a task_id and returns the task object
+      with title, status, and metadata.
+    </description>
+  </eval>
+
+  <eval id="feishu-task-3">
+    <question>Create a new task titled "Review PR #123" under goal "goal_xyz789" assigned to "user_42" with due date 2026-05-15.</question>
+    <expected_tool>create_task</expected_tool>
+    <expected_arguments>
+      <argument name="goal_id" type="string">goal_xyz789</argument>
+      <argument name="title" type="string">Review PR #123</argument>
+      <argument name="assignee_id" type="string">user_42</argument>
+      <argument name="due_date" type="string">2026-05-15</argument>
+    </expected_arguments>
+    <expected_result_type>object</expected_result_type>
+    <description>
+      Verify create_task accepts goal_id, title, optional assignee_id and due_date,
+      returns the created task.
+    </description>
+  </eval>
+
+  <eval id="feishu-task-4">
+    <question>Mark task "task_100" as completed.</question>
+    <expected_tool>complete_task</expected_tool>
+    <expected_arguments>
+      <argument name="task_id" type="string">task_100</argument>
+    </expected_arguments>
+    <expected_result_type>object</expected_result_type>
+    <description>
+      Verify complete_task accepts a task_id and returns the completed task.
+    </description>
+  </eval>
+
+  <!-- ================================================================== -->
+  <!-- MESSAGES EVALS (3)                                                  -->
+  <!-- ================================================================== -->
+
+  <eval id="feishu-msg-1">
+    <question>Send a text message saying "Hello, team!" to the chat "oc_abc123".</question>
+    <expected_tool>send_message</expected_tool>
+    <expected_arguments>
+      <argument name="chat_id" type="string">oc_abc123</argument>
+      <argument name="content" type="string">Hello, team!</argument>
+      <argument name="msg_type" type="string">text</argument>
+    </expected_arguments>
+    <expected_result_type>object</expected_result_type>
+    <description>
+      Verify send_message accepts chat_id, content, and optional msg_type (default text),
+      returns the sent message.
+    </description>
+  </eval>
+
+  <eval id="feishu-msg-2">
+    <question>Get the 20 most recent messages from chat "oc_abc123".</question>
+    <expected_tool>get_messages</expected_tool>
+    <expected_arguments>
+      <argument name="chat_id" type="string">oc_abc123</argument>
+      <argument name="limit" type="number">20</argument>
+    </expected_arguments>
+    <expected_result_type>array</expected_result_type>
+    <description>
+      Verify get_messages accepts chat_id and optional limit,
+      returns an array of messages.
+    </description>
+  </eval>
+
+  <eval id="feishu-msg-3">
+    <question>Search all messages containing "deploy" across all chats I have access to.</question>
+    <expected_tool>search_messages</expected_tool>
+    <expected_arguments>
+      <argument name="query" type="string">deploy</argument>
+    </expected_arguments>
+    <expected_result_type>array</expected_result_type>
+    <description>
+      Verify search_messages accepts query and optional chat_id filter,
+      returns matching messages.
+    </description>
+  </eval>
+</evaluations>

@@ -1,0 +1,21 @@
+app_id: "your_app_id_here"
+app_secret: "your_app_secret_here"
+
+# 飞书 API 基础地址
+feishu_api_base: "https://open.feishu.cn"
+
+# Token 存储路径
+token_store_path: "~/.feishu-mcp/tokens.db"
+
+# 日志配置
+log_level: "info"
+
+# Rate limit 配置
+rate_limit:
+  requests_per_second: 10
+  burst_size: 20
+
+# OAuth 配置
+oauth:
+  token_refresh_threshold_secs: 300
+  max_retry_attempts: 1

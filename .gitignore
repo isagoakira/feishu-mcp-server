@@ -1,0 +1,46 @@
+# Build artifacts
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-settings
+
+# OS
+.DS_Store
+Thumbs.db
+*.lnk
+
+# Test coverage
+coverage/
+*.lcov
+*.profraw
+*.prof
+*.cov
+
+# Harness (multi-agent orchestration artifacts)
+.claude/
+dev-plan.md
+harness-spec.md
+main-log.md
+lessons-learned.md
+TODO.md
+
+# Rust
+debug/
+release/
+.git/
+
+# Logs
+*.log
+*.trace
+
+# Temp files
+*.tmp
+*.temp
+*.bak
